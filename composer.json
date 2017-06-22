@@ -1,7 +1,6 @@
 {
-  "name": "mohannadnaj/active-state",
+  "name": "mohannad/active-state",
   "description": "PHP Helper Package for marking active state in application's runtime.",
-  "version": "1.0",
   "license": "MIT",
   "type": "package",
   "authors": [
@@ -13,5 +12,13 @@
   "autoload": {
     "files": ["src/helper.php"],
     "classmap": ["src/"]
-  }
+  },
+  "require": {
+    "php": ">=5.6.4"
+  },
+  "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
 }
