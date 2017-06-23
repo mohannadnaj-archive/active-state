@@ -39,6 +39,7 @@ class ActiveStateTest extends PHPUnit_Framework_TestCase
         set_active(['global_val','return'=>'class']);
 
         $this->assertEquals(is_active('global_val'), 'active');
+        $this->assertEquals(is_active('wrong_global_val'), null);
     }
 
     public function test_multiple_keys()
