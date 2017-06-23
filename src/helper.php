@@ -1,7 +1,8 @@
 <?php
+
 const ACTIVESTATE_GLOBAL_KEY = '_ACTIVESTATE_GLOBAL_KEY';
 
-if (! function_exists('set_active')) {
+if (!function_exists('set_active')) {
     function set_active(...$params)
     {
         static $loaded = [];
@@ -10,7 +11,7 @@ if (! function_exists('set_active')) {
 
         // get the active element
         if (count($params) == 1 && is_string($params[0])) {
-            if (! array_key_exists($params[0], $loaded)) {
+            if (!array_key_exists($params[0], $loaded)) {
                 return _set_active_is_boolean($defaults['return']) ? false : null;
             } else {
                 return $loaded[$params[0]]['active'];
@@ -26,8 +27,8 @@ if (! function_exists('set_active')) {
     }
 }
 
-if (! function_exists('is_active')) {
-    function is_active(... $params)
+if (!function_exists('is_active')) {
+    function is_active(...$params)
     {
         if (count($params) == 1) {
             return set_active(ACTIVESTATE_GLOBAL_KEY, $params[0]);
@@ -37,11 +38,11 @@ if (! function_exists('is_active')) {
     }
 }
 
-if (! function_exists('_set_active_check_state')) {
-    function _set_active_check_state(& $params, & $loaded, & $defaults)
+if (!function_exists('_set_active_check_state')) {
+    function _set_active_check_state(&$params, &$loaded, &$defaults)
     {
         // if we are checking the active state for an index isn't set yet, return false or ''
-        if (! array_key_exists($params[0], $loaded)) {
+        if (!array_key_exists($params[0], $loaded)) {
             return _set_active_is_boolean($defaults['return']) ? false : null;
         }
 
@@ -56,13 +57,13 @@ if (! function_exists('_set_active_check_state')) {
                 return $loaded[$params[0]]['class'];
             }
         } else { // the first param active element does not match the second param
-            return _set_active_is_boolean($loaded[$params[0]]['return']) ? false: null;
+            return _set_active_is_boolean($loaded[$params[0]]['return']) ? false : null;
         }
     }
 }
 
-if (! function_exists('_set_active_add')) {
-    function _set_active_add(& $params, & $loaded, & $defaults)
+if (!function_exists('_set_active_add')) {
+    function _set_active_add(&$params, &$loaded, &$defaults)
     {
         $settings = $params[0];
         $indexKey = null;
@@ -90,18 +91,17 @@ if (! function_exists('_set_active_add')) {
             $preparedSettings['class'] = $defaults['class'];
         }
 
-        if (! empty($indexKey)) {
+        if (!empty($indexKey)) {
             $loaded[$indexKey] = $preparedSettings;
         }
-
-        return null;
     }
 }
 
-if (! function_exists('_set_active_is_boolean')) {
+if (!function_exists('_set_active_is_boolean')) {
     function _set_active_is_boolean($value)
     {
-        $booleanValues = ['bool','boolean'];
+        $booleanValues = ['bool', 'boolean'];
+
         return in_array($value, $booleanValues);
     }
 }
