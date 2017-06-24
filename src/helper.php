@@ -1,21 +1,22 @@
 <?php
+
 define('ACTIVESTATE_GLOBAL_KEY', '_ACTIVESTATE_GLOBAL_KEY');
 
-if (! function_exists('set_active')) {
+if (!function_exists('set_active')) {
     function set_active()
     {
         $params = func_get_args();
 
-        static $loaded = array();
+        static $loaded = [];
         // default values
-        static $defaults = array(
+        static $defaults = [
                             'class'  => 'active',
                             'return' => 'class',
-                           );
+                           ];
 
         // get the active element
         if (count($params) == 1 && is_string($params[0])) {
-            if (! array_key_exists($params[0], $loaded)) {
+            if (!array_key_exists($params[0], $loaded)) {
                 return _set_active_is_boolean($defaults['return']) ? false : null;
             } else {
                 return $loaded[$params[0]]['active'];
@@ -31,7 +32,7 @@ if (! function_exists('set_active')) {
     }//end set_active()
 }//end if
 
-if (! function_exists('is_active')) {
+if (!function_exists('is_active')) {
     function is_active()
     {
         $params = func_get_args();
@@ -44,11 +45,11 @@ if (! function_exists('is_active')) {
     }//end is_active()
 }
 
-if (! function_exists('_set_active_check_state')) {
-    function _set_active_check_state(& $params, & $loaded, & $defaults)
+if (!function_exists('_set_active_check_state')) {
+    function _set_active_check_state(&$params, &$loaded, &$defaults)
     {
         // if we are checking the active state for an index isn't set yet, return false or ''
-        if (! array_key_exists($params[0], $loaded)) {
+        if (!array_key_exists($params[0], $loaded)) {
             return _set_active_is_boolean($defaults['return']) ? false : null;
         }
 
@@ -68,12 +69,12 @@ if (! function_exists('_set_active_check_state')) {
     }//end _set_active_check_state()
 }//end if
 
-if (! function_exists('_set_active_add')) {
-    function _set_active_add(& $params, & $loaded, & $defaults)
+if (!function_exists('_set_active_add')) {
+    function _set_active_add(&$params, &$loaded, &$defaults)
     {
-        $settings         = $params[0];
-        $indexKey         = null;
-        $preparedSettings = array();
+        $settings = $params[0];
+        $indexKey = null;
+        $preparedSettings = [];
         foreach ($settings as $key => $value) {
             // if the settings isn't the defaults, e.g: set_active(['tabs'=>'about','return'=>'boolean']) or set_active(['tabs'=>'about','class'=>'is-active'])
             if ($key === 'class' || $key === 'return') {
@@ -98,21 +99,20 @@ if (! function_exists('_set_active_add')) {
             $preparedSettings['class'] = $defaults['class'];
         }
 
-        if (! empty($indexKey)) {
+        if (!empty($indexKey)) {
             $loaded[$indexKey] = $preparedSettings;
         }
-
-        return null;
     }//end _set_active_add()
 }//end if
 
-if (! function_exists('_set_active_is_boolean')) {
+if (!function_exists('_set_active_is_boolean')) {
     function _set_active_is_boolean($value)
     {
-        $booleanValues = array(
+        $booleanValues = [
                           'bool',
                           'boolean',
-                         );
+                         ];
+
         return in_array($value, $booleanValues);
     }//end _set_active_is_boolean()
 }
