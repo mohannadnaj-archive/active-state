@@ -99,7 +99,7 @@ since using the same `set_active`for both setting and checking the active item m
 ----------
 
 ## Requirements:
-- PHP >=5.6.4
+- PHP >=5.2
 
 ----------
 
@@ -112,7 +112,6 @@ since using the same `set_active`for both setting and checking the active item m
 - Exploring the code in [src/helper.php](src/helper.php), at first glance you may see some issues to be fixed:
     - Why it's not OOP?
     - why there is no static class to hold the values?
-    - why `...$params` used for retrieving function arguments so it's not compatible with older PHP versions?
     - ..etc.
 
 Thanks for considering contributing to this project.
