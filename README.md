@@ -80,7 +80,9 @@ Some solutions out there have the downsides: 1- Framework-Specific Package. 2- C
 
 ### Solution:
 
-The package will load the methods `set_active`, `get_active` and `is_active`, `set_active` is the main method that's has a `static` variable which will load and preserve the settings (what is the active item? what class should it return if the check is passed? or should it return boolean?). The above example can be translated to:       
+The package will load the methods `set_active`, `get_active` and `is_active`, `set_active` will set a given settings to a static variable inside the `Mohannadnaj\Active` class, this settings answer the questions: what is the active item? what should it return if the check is passed? or should it return boolean? and what is the key you want to attach all this settings to?
+
+The above example can be translated to:       
 
     set_active('navbar', 'about');
     
@@ -101,11 +103,10 @@ the `set_active` method will consider the first argument `set_active('navbar' , 
 
 - Check out the [tests/ActiveStateTest.php](tests/ActiveStateTest.php) Test Case to see different examples of using the helper methods.
 
-- Consider using [PHPCompatibility](https://github.com/wimg/PHPCompatibility) to keep it compatible with older versions (>=5.3).
+- Consider keeping it compatible with older PHP versions (>=5.3), personally, I used [PHPCompatibility](https://github.com/wimg/PHPCompatibility) to do the checks for me.
 
 - TODO: Better documentation. Better consistant syntax (`accept and return types`) for using the methods.
-
-- 
+ 
 Thanks for considering contributing to this project.
 
 
