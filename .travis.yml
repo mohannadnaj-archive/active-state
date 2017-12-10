@@ -5,7 +5,6 @@ cache:
     - $HOME/.composer/cache
 
 php:
-  - 5.3
   - 5.4
   - 5.5
   - 5.6
@@ -31,17 +30,12 @@ install:
 
 script:
   - vendor/bin/phpunit --verbose --coverage-clover=coverage.xml
-  - if [[ $phpstan = 'true' ]]; then travis_retry composer require --dev phpstan/phpstan:^0.6 && vendor/bin/phpstan analyse --configuration phpstan.neon --level 3 src tests; fi
-
+  
 after_success:
   - if [[ $coverage = 'true' ]]; then bash <(curl -s https://codecov.io/bash); fi
 
 matrix:
   include:
-    - php: 5.3
-      env: setup=lowest
-    - php: 5.3
-      env: setup=stable
     - php: 5.4
       env: setup=lowest
     - php: 5.4
@@ -58,14 +52,13 @@ matrix:
       env: setup=lowest
     - php: 7.0
       env:
-        - phpstan=true
+        - phpstan=false
         - setup=stable
     - php: 7.1
       env: setup=lowest
     - php: 7.1
       env:
-        - coverage=true
-        - phpstan=true
+        - phpstan=false
         - setup=stable
   allow_failures:
     - php: hhvm
