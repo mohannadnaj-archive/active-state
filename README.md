@@ -3,7 +3,7 @@ PHP Helper Package for marking active state in application's runtime.
 
 Common use cases for this package includes: Marking the active menu-item, Marking the active item in your Navbar, Sidebar, or Tabs.
 
-[![Total Downloads][downloads-image]][package-link]
+[![Total Downloads][downloads-image]][package-link][![Build Status](https://travis-ci.org/MohannadNaj/active-state.svg?branch=master)](https://travis-ci.org/MohannadNaj/active-state)
 
 ----------
 ## Installation:
